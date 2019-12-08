@@ -1,0 +1,341 @@
+$mainColor:#1976d3;
+
+body{
+    background-color: #f8f7f7;
+    font-size: 14px;
+    min-height: 100%;
+    position: relative;
+}
+.price-color {
+    color: #ff6059 !important;
+}
+
+.main-color {
+    color: #0285fb !important;
+}
+
+.main-bg {
+    background-color: #0285fb;
+}
+
+.sub-color {
+    color: #0f5ba8 !important;
+}
+
+.sub-bg {
+    background-color: #0f5ba8;
+}
+
+.padding-lr {
+    $val: 25px;
+    padding-left: $val !important;
+    padding-right: $val !important;
+}
+
+button{
+    cursor: pointer;
+    outline: none;
+}
+img{
+    vertical-align: top;
+}
+
+.main-width{
+    width: 100%;
+    max-width: 500px;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+.no-select{
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+}
+
+.button-ground {
+    $h: 45px;
+    $tb: 15px;
+    $lr: 35px;
+    padding-top: $tb;
+    padding-bottom: $tb;
+    padding-left: $lr;
+    padding-right: $lr;
+    -ms-user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    .button-default {
+        line-height: $h;
+        border-radius: 888px;
+        text-align: center;
+        color: #0285fb;
+        border: 1px solid #0285fb;
+        /*box-shadow: 0px 0px 15px rgba($color: #0285fb, $alpha: 0.15), inset 0px 0px 15px rgba($color: #0285fb, $alpha: 0.15);*/
+        font-size: 32px;
+        margin-top: 30px;
+        cursor: pointer;
+    }
+    .button-primary {
+        line-height: $h;
+        border-radius: 888px;
+        text-align: center;
+        background: #0285fb;
+        /*box-shadow: 0px 0px 15px rgba($color: #0285fb, $alpha: 0.15);*/
+        font-size: 16px;
+        color: #fff;
+        cursor: pointer;
+    }
+}
+
+.border-btm,
+.border-top {
+    position: relative;
+    border: none;
+}
+
+.border-btm::before,
+.border-top::after {
+    content: '';
+    display: block;
+    height: 1px;
+    background-color: #E5E5E5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    transform: scaleY(0.5);
+}
+
+.border-btm::before {
+    bottom: 0;
+}
+
+.border-top::after {
+    top: 0;
+}
+
+.not-border-last .border-btm:nth-last-child(1)::before {
+    display: none;
+}
+
+.shadow {
+    box-shadow: 1px 1px 16px rgba(0, 0, 0, 0.1);
+}
+
+.no-null {
+    /* 输入框不能为空 */
+    position: relative;
+    padding-right: 10px;
+    &::after {
+        content: '*';
+        color: #ff6059;
+        font-size: 14px;
+        line-height: normal;
+        position: absolute;
+        top: 50%;
+        right: 0px;
+        transform: translateY(-50%);
+    }
+}
+
+.blank-space {
+    /***空格**/
+    visibility: hidden;
+    display: inline;
+}
+
+.bold {
+    font-weight: bold;
+}
+
+.c333 {
+    color: #333 !important;
+}
+
+.c666 {
+    color: #666 !important;
+}
+
+.c999 {
+    color: #999 !important;
+}
+
+.cbbb {
+    color: #bbb !important;
+}
+
+.cccc {
+    color: #ccc !important;
+}
+
+.cfff {
+    color: #fff !important;
+}
+
+.text-center {
+    text-align: center;
+}
+
+
+
+
+.text-center{
+    text-align: center;
+}
+.text-left{
+    text-align: left;
+}
+.text-right{
+    text-align: right;
+}
+.hide{
+    display: none !important;
+}
+.show{
+    display: block !important;
+}
+
+
+.ellipsis1{
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow: ellipsis;
+}
+@for $i from 2 through 10 {
+    .ellipsis#{$i}{
+        overflow: hidden;
+        text-overflow: ellipsis;
+        display: -webkit-box;
+        -webkit-line-clamp: $i;
+        -webkit-box-orient: vertical;
+    }
+}
+
+
+
+.head-tab {
+    $h: 50px;
+    height: $h;
+    .container {
+        height: $h;
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        z-index: 9999;
+        background: #f4f3ee;
+        background: #fff;
+        box-shadow: 0px 0px 15px rgba($color: #222, $alpha: 0.1);
+        .box {
+            height: 100%;
+            display: flex;
+            align-items: center;
+            .list {
+                height: 100%;
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                &.active {
+                    .name {
+                        color: #0285fb;
+                        &::after {
+                            content: '';
+                            position: absolute;
+                            bottom: -12px;
+                            left: -5px;
+                            right: -5px;
+                            border-bottom: 1px solid #0285fb;
+                        }
+                    }
+                }
+                .name {
+                    position: relative;
+                    font-size: 30px;
+                    color: #666;
+                }
+            }
+        }
+    }
+}
+
+
+
+
+
+
+/**10像素到200像素的字体,用法:fz20 **/
+@for $i from 10 through 200 {
+    .fz#{$i} { font-size: $i+px; }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.nice-scroll::-webkit-scrollbar { 
+    width: 8px; 
+    height: 5px; 
+    background-color: transparent; 
+}
+
+/*定义滚动条轨道 内阴影+圆角*/
+.nice-scroll::-webkit-scrollbar-track {
+    border-radius: 10px;
+    background-color: transparent;
+}
+
+/*定义滑块 内阴影+圆角*/
+.nice-scroll::-webkit-scrollbar-thumb {
+    border-radius: 10px; 
+    background-color: rgba(0, 0, 0, 0.3); 
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, .3); 
+}
+
+
+
+/*----------------设置全局滚动条的样式start----------------*/
+
+::-webkit-scrollbar-track {
+  /* 背景色是整体区域 */
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar {
+  /* 设置滚动条坚横的宽与高，背景色是整体区域 */
+  width: 8px;
+  height: 8px;
+  background-color: #F5F5F5;
+}
+
+::-webkit-scrollbar-thumb {
+  /* 滚动条的颜色，背景色是局部区域 */
+  background-color: #999;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  /* hover设置鼠标放在滚动条的颜色 */
+  background-color: #666;
+  -webkit-border-radius: 0px;
+}
+
+::-webkit-scrollbar-thumb:active {
+  /* active设置鼠标点击滚动条的颜色 */
+  background-color: #333;
+  -webkit-border-radius: 0px;
+}
+
+/*----------------设置全局滚动条的样式end----------------*/
+
+
+

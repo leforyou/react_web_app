@@ -1,0 +1,51 @@
+.Customer{
+    .bg {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        z-index: 1;
+        padding-top: 45.6%;
+        img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+        }
+    }
+    .people {
+        padding-top: 20%;
+        position: relative;
+        z-index: 99;
+        display: flex;
+        justify-content: center;
+        img {
+            $wh: 160px;
+            width: $wh;
+            height: $wh;
+        }
+    }
+    .customer {
+        padding-top: 25px;
+        padding-bottom: 20px;
+        position: relative;
+        z-index: 99;
+        .box {
+            .info {
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                .sub-title {
+                    margin-bottom: 15px;
+                    line-height: normal;
+                }
+                .desc {
+                    margin-top: 8px;
+                    color: #666;
+                }
+            }
+        }
+    }
+}
