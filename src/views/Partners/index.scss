@@ -1,3 +1,78 @@
-.Partner{
-    
+.Partner {
+    $val: 12px;
+    padding-top: $val;
+    padding-bottom: $val;
+
+    ul {
+        position: relative;
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: -12px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0px 0px 5px rgba($color: #000000, $alpha: 0.05);
+        padding: 10px 15px;
+
+        &::after {
+            content: '';
+            display: block;
+            position: absolute;
+            bottom: 10px;
+            left: 0;
+            right: 0;
+            background: #fff;
+            height: 4px;
+        }
+
+        li {
+            width: 25%;
+            position: relative;
+
+            &:after {
+                content: '';
+                position: absolute;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                border-bottom: 1px dotted #ccc;
+                transform: scaleY(0.5);
+            }
+
+            &:before {
+                content: '';
+                position: absolute;
+                right: 0;
+                top: 0;
+                bottom: 0;
+                border-right: 1px dotted #ccc;
+                transform: scaleX(0.5);
+            }
+
+            &:nth-child(4n+4):before {
+                display: none !important;
+            }
+
+            .li-box {
+                display: flex;
+                flex-direction: column;
+                align-items: center;
+                padding-top: 15px;
+                padding-bottom: 8px;
+
+                img {
+                    width: 50px;
+                    height: 45px;
+                    border-radius: 8px;
+                    object-fit: cover;
+                }
+
+                .desc {
+                    font-size: 13px;
+                    max-width: 65px;
+                    margin-top: 10px;
+                    text-align: center;
+                }
+            }
+        }
+    }
 }
