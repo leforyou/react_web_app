@@ -5,7 +5,7 @@ import NavigationBar from './../../components/NavigationBar/index';
 
 import './index.scss';
 
-class index extends Component {
+class User extends Component {
     render() {
         return (
             <Fragment>
@@ -19,4 +19,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default User;

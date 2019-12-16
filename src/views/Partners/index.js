@@ -4,7 +4,7 @@ import NavigationBar from './../../components/NavigationBar/index';
 
 import './index.scss';
 
-class index extends Component {
+class Partners extends Component {
     constructor(props){
         super(props);
         this.state={
@@ -69,4 +69,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default Partners;

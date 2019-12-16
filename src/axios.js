@@ -11,7 +11,7 @@ axios.interceptors.request.use(
     
     config.headers["content-type"] = "application/x-www-form-urlencoded"; // 默认值 application/json
     let token = localStorage.getItem('token');
-    config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIFwqLUdLyvThceAZ7Qxyo+HrZKQ62p/u56WBRCQa/dAuOZMrjOfF9fgI7hQeFS1yEJHigmuGMY6uCnhVfCpbUcwk=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
+    config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIF3YGnFjvNbQrwg29UF1/YygQtIFWXjO80CLfZaEejC37egNxr8xH2VO5UqUwtGQx+oB/6BCH4hVrvGYu/6enCDE=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
 
     return config;
   },

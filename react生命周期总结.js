@@ -82,7 +82,8 @@ class index extends Component {
         //let {activeNum} = this.props;获取父组件传来参数
         return (
             <div className="NavigationBar">
-                
+                <p>图片的引入的方式:</p>
+                <img src={require('../img/logo.png')} alt="图片"/>
             </div>
         );
     }

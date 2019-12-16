@@ -3,7 +3,7 @@ import {NavLink} from 'react-router-dom';
 import './index.scss';
 
 
-class index extends Component {
+class NavigationBar extends Component {
     constructor(props){
         super(props);
         this.state={};
@@ -64,4 +64,4 @@ class index extends Component {
     }
 }
 
-export default index;
+export default NavigationBar;
