@@ -1,45 +1,143 @@
-.NavigationBar{
-    $h:50px;
-    height: $h;
-    .box{
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 99999;
-        height: $h;
-        background: #fff;
-        box-shadow: 0px 0px 6px rgba($color: #000000, $alpha: 0.1);
-        ul{
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            li{
-                flex-grow: 1;
-                height: 100%;
-                &.active{
-                    a{
-                        .desc{
-                            color: #0285fb;
-                        }
+.Modal{
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1000;
+    background-color: rgba($color: #000000, $alpha: 0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
+    -webkit-user-select: none;
+    &.Modal-Way1{
+        transition: all 0.3s;
+        opacity: 0;
+        visibility: hidden;
+        &.active{
+            opacity: 1;
+            visibility: visible;
+            .Modal-body{
+                transform: scale(1);
+            }
+        }
+        .Modal-body{
+            transform: scale(0.9);
+            transition: all 0.3s;
+        }
+    }
+    &.Modal-Way2{
+        &.modal-show{
+            /* opacity: 1;
+            visibility: visible; */
+            animation: name1 0.3s forwards;
+            @keyframes name1 {
+                0%{
+                    opacity: 0;
+                    visibility: hidden;
+                }
+                100%{
+                    opacity: 1;
+                    visibility: visible;
+                }
+            }
+            .Modal-body{
+                animation: scaleShow 0.3s forwards;
+                /* transform: scale(0.9); */
+                @keyframes scaleShow {
+                    0%{
+                        transform: scale(0.9);
+                    }
+                    100%{
+                        transform: scale(1);
                     }
                 }
-                a{
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    img{
-                        $wh:25px;
-                        width: $wh;
-                        width: $wh;
+            }
+        }
+        &.modal-hide{
+            animation: name2 0.3s forwards;
+            @keyframes name2 {
+                0%{
+                    opacity: 1;
+                    visibility: visible;
+                }
+                100%{
+                    opacity: 0;
+                    visibility: hidden;
+                }
+            }
+            .Modal-body{
+                animation: scaleHide 0.3s forwards;
+                @keyframes scaleHide {
+                    0%{
+                        transform: scale(1);
                     }
-                    .desc{
-                        color: #666;
-                        font-size: 10px;
-                        margin-top: -4px;
+                    100%{
+                        transform: scale(0.9);
                     }
+                }
+            }
+        }
+    }
+    .Modal-body{
+        position: absolute;
+        width: 100%;
+        max-width: 300px;
+        background: #fff;
+        border-radius: 6px;
+        line-height: normal;
+        padding-top: 25px;
+        .title{
+            margin-bottom: 15px;
+            color: #222;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+        }
+        .content{
+            margin-bottom: 25px;
+            color: #555;
+            font-size: 14px;
+            text-align: center;
+        }
+        .foot{
+            position: relative;
+            display: flex;
+            align-items: center;
+            &::before{
+                content: '';
+                display: block;
+                position: absolute;
+                left: 0;
+                right: 0;
+                top: 0;
+                border-top: 1px solid #e8e8e8;
+                transform: scaleY(0.5);
+            }
+            .button{
+                flex-grow: 1;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: normal;
+                padding: 15px 10px;
+                color: #333;
+                font-size: 14px;
+                position: relative;
+                cursor: pointer;
+                &:first-child::before{
+                    display: none;
+                }
+                &::before{
+                    content: '';
+                    display: block;
+                    position: absolute;
+                    top: 0;
+                    bottom: 0;
+                    left: 0;
+                    border-left: 1px solid #e8e8e8;
+                    transform: scaleX(0.5);
                 }
             }
         }

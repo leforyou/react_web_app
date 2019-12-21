@@ -13,10 +13,10 @@ class User extends Component {
                     我是个人中心页面！
                   
                 </div>
-                <NavigationBar activeNum={3}></NavigationBar>
+                {/* <NavigationBar activeNum={3}></NavigationBar> 普通组件 */}
             </Fragment>
         );
     }
 }
 
-export default User;
+export default NavigationBar(User,3);//高阶组件的使用

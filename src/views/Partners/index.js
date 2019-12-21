@@ -63,10 +63,10 @@ class Partners extends Component {
                         }
                     </ul>
                 </div>
-                <NavigationBar activeNum={2}></NavigationBar>
+                {/* <NavigationBar activeNum={2}></NavigationBar> 普通组件 */}
             </Fragment>
         );
     }
 }
 
-export default Partners;
+export default NavigationBar(Partners,2);//高阶组件的使用

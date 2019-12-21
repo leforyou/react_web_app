@@ -1,37 +1,3 @@
-.NavigationBar{
-    $h:50px;
-    height: $h;
-    .box{
-        position: fixed;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: 99999;
-        height: $h;
-        background: #fff;
-        box-shadow: 0px 0px 6px rgba($color: #000000, $alpha: 0.1);
-        ul{
-            height: 100%;
-            display: flex;
-            justify-content: center;
-            li{
-                flex-grow: 1;
-                height: 100%;
-                a{
-                    height: 100%;
-                    display: flex;
-                    flex-direction: column;
-                    align-items: center;
-                    justify-content: center;
-                    img{
-                        width: 30px;
-                    }
-                    .desc{
-                        color: #666;
-                        font-size: 14px;
-                    }
-                }
-            }
-        }
-    }
+.User{
+    
 }

@@ -27,10 +27,10 @@ class Customer extends Component {
                         <div className="button-primary">联系在线客服</div>
                     </div>
                 </div>
-                <NavigationBar activeNum={1}></NavigationBar>
+                {/* <NavigationBar activeNum={1}></NavigationBar> 普通组件 */}
             </Fragment>
         );
     }
 }
 
-export default Customer;
+export default NavigationBar(Customer,1);//高阶组件的使用

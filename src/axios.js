@@ -10,7 +10,7 @@ axios.interceptors.request.use(
     //config.url = 'https://www.lou5u.com/ict-wx/' + config.url;//因为接口跨域问题，必须使用代理转发。在package.json中配置了，所以不要加域名或IP，加了就不会转发接口。
     
     config.headers["content-type"] = "application/x-www-form-urlencoded"; // 默认值 application/json
-    let token = localStorage.getItem('token');
+    //let token = localStorage.getItem('token');
     config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIF3YGnFjvNbQrwg29UF1/YygQtIFWXjO80CLfZaEejC37egNxr8xH2VO5UqUwtGQx+oB/6BCH4hVrvGYu/6enCDE=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
 
     return config;
