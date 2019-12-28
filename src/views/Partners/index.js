@@ -1,6 +1,7 @@
 import React, { Component,Fragment } from 'react';
-
+import { withRouter } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
 import NavigationBar from './../../components/NavigationBar/index';
+
 
 import './index.scss';
 
@@ -18,6 +19,7 @@ class Partners extends Component {
     
     componentDidMount() {
         //alert("componentDidMount");
+        console.log('react-router:',this.props);
         this.getListData();
     }
 
@@ -40,6 +42,10 @@ class Partners extends Component {
     }
     componentDidUpdate() {
         //alert("componentDidUpdate");
+    }
+    loadFunc(){
+        console.log(8888888);
+        //this.getListData();
     }
     render() {
         //let listArr = this.state;
@@ -69,4 +75,4 @@ class Partners extends Component {
     }
 }
 
-export default NavigationBar(Partners,2);//高阶组件的使用
+export default NavigationBar(withRouter(Partners),2);//高阶组件的使用

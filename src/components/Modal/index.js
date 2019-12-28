@@ -7,7 +7,11 @@ class Modal extends Component {
         super(props);
         this.state = {
             visible: props.visible || false,
-            id: props.id || `modal-id-${(new Date()).getTime()}`//通过时间戳生成唯一的ID
+            id: props.id || `modal-id-${(new Date()).getTime()}`,//通过时间戳生成唯一的ID
+            title: props.title || '',
+            content: props.content || '内容...',
+            okText: props.okText || '确定',
+            cancelText: props.cancelText || '取消',
         };
         this.onCancelClick = this.onCancelClick.bind(this);
         this.onOkClick = this.onOkClick.bind(this);
@@ -41,7 +45,7 @@ class Modal extends Component {
         // 关闭弹层函数
     }
     render() {
-        let {visible} = this.state;
+        let {visible,title,content,okText,cancelText} = this.state;
         let {type} = this.props;
         let class_name1 = `Modal-Way1 ${visible && type === undefined ? 'active' : ''}`;
         let class_name2 = `Modal-Way2 ${visible && type !== undefined ? 'modal-show' : 'modal-hide'}`;
@@ -49,11 +53,13 @@ class Modal extends Component {
         return ReactDOM.createPortal((
             <div id={this.state.id} className={`Modal ${class_name}`}>
                 <div className="Modal-body">
-                    <div className="title">温馨提示</div>
-                    <div className="content">你确定要删除该条消息吗？</div>
+                    {/* <div className="title" style={{display:title===''?'none':'block'}}>{title}</div>   如果您使用过度display: 'none'，则会导致DOM污染，并最终减慢您的应用程序的速度。*/}
+                    {/* {title !=='' ? <div className="title">{title}</div> : null } */}
+                    {title !=='' && <div className="title">{title}</div>}
+                    <div className="content">{content}</div>
                     <div className="foot">
-                        <div className="button" onClick={this.onCancelClick}>取消</div>
-                        <div className="button" onClick={this.onOkClick}>确定</div>
+                        <div className="button" onClick={this.onCancelClick}>{cancelText}</div>
+                        <div className="button" onClick={this.onOkClick}>{okText}</div>
                     </div>
                 </div>
             </div>
@@ -62,9 +68,9 @@ class Modal extends Component {
 }
 //控制器
 Modal.confirm = (props) => {
-    const Fragment = document.createDocumentFragment();//创建虚拟节点对象
     let id = `modal-id-${(new Date()).getTime()}`//通过时间戳生成唯一的ID;
-    document.body.appendChild(Fragment);
+    const wrapped_div = document.createElement('div');
+    document.body.appendChild(wrapped_div);
     function confirmCancel() {
         //注意：该函数是作为一个关键过渡的桥梁
         removeDom();
@@ -76,15 +82,14 @@ Modal.confirm = (props) => {
         if (typeof props.onOk === 'function') props.onOk();//调用父级的函数
     }
     function removeDom(){
-        let DIV_DOM = document.getElementById(id);
-        DIV_DOM.classList.remove('modal-show');
-        DIV_DOM.classList.add('modal-hide');
-        DIV_DOM.addEventListener('animationend',function(e){
-            //console.log(this,DIV_DOM);
-            if(e.target === DIV_DOM) { //【e.target === this】【e.target === e.currentTarget】
+        let Modal_DOM = document.getElementById(id);
+        Modal_DOM.classList.remove('modal-show');
+        Modal_DOM.classList.add('modal-hide');
+        Modal_DOM.addEventListener('animationend',function(e){
+            if(e.target === Modal_DOM) { //【e.target === this】【e.target === e.currentTarget】
                 //对于animationend事件来说的话，如果我们在外层添加这个事件监听，如果监听元素里面还有动画，则里面元素动画结束也会执行这个animationend事件。
-                DIV_DOM.parentNode.removeChild(DIV_DOM);
-                //this.parentNode.removeChild(this);
+                ReactDOM.unmountComponentAtNode(wrapped_div);//必须销毁不再使用的组件，否则虚拟DOM树会越积越多影响性能。
+                document.body.removeChild(wrapped_div);
             }
         });
     }
@@ -97,7 +102,7 @@ Modal.confirm = (props) => {
             onCancel={confirmCancel}
             onOk={confirmOk}
         ></Modal>
-        , Fragment,()=>{
+        , wrapped_div,()=>{
             //console.log('callback: 插入回调');
         }
     );
@@ -105,9 +110,23 @@ Modal.confirm = (props) => {
 
 /* 
 使用方式：
-1.组件<Modal visible={this.state.visible} onOk={this.hideModal.bind(this)} onCancel={this.hideModal.bind(this)}></Modal>
-2.方式调用
+1.组件
+<Modal
+    title='警告'
+    content='确定执行该操作吗？'
+    visible={this.state.visible} 
+    onOk={this.hideModal.bind(this)} 
+    onCancel={this.hideModal.bind(this)}>
+</Modal>
+
+-------------------------------------------------------------------------------
+
+2.JS方式调用
 Modal.confirm({
+    title:'温馨提示',
+    content:'你确定要删除该内容吗？',
+    okText:'确定',
+    cancelText:'取消',
     onOk:()=>{
         //do something code
     },

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { Component } from "react";
+import Toast from './components/Toast/index';
 
 //let isOnLine = process.env.NODE_ENV === 'production'? true:false; //生产环境：production 与 开发环境：development
 
@@ -11,7 +12,7 @@ axios.interceptors.request.use(
     
     config.headers["content-type"] = "application/x-www-form-urlencoded"; // 默认值 application/json
     //let token = localStorage.getItem('token');
-    config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIF3YGnFjvNbQrwg29UF1/YygQtIFWXjO80CLfZaEejC37egNxr8xH2VO5UqUwtGQx+oB/6BCH4hVrvGYu/6enCDE=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
+    config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIFy63dRLDGJ9hDFvEy28lgFlkoapSHlK2xUZ7878BwOLOPTyIJzJpAvLjaE2b8rWXpZ7TyPajJLy319Q69PM6G3w=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
 
     return config;
   },
@@ -27,6 +28,7 @@ axios.interceptors.response.use(
     return res.data;
   },
   err => {
+    Toast.show('服务器繁忙!');
     if (err.response.status === 504 || err.response.status === 404) {
       console.log("服务器被吃了⊙﹏⊙∥");
     } else if (err.response.status === 401) {

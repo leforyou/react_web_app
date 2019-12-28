@@ -1,9 +1,20 @@
 import React, { Component ,Fragment} from 'react';
+import { withRouter } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
 import NavigationBar from './../../components/NavigationBar/index';
+
 
 import './index.scss';
 
 class Customer extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+    
+    componentDidMount(){
+        //获取react-router的history、location、match三个对象传入
+        console.log('react-router:',this.props);
+    }
     render() {
         return (
             <Fragment>
@@ -33,4 +44,4 @@ class Customer extends Component {
     }
 }
 
-export default NavigationBar(Customer,1);//高阶组件的使用
+export default NavigationBar(withRouter(Customer),1);//高阶组件的使用

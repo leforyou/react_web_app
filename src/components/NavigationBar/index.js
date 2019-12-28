@@ -32,6 +32,15 @@ let NavigationBar = (WrappedComponent,activeNum)=> class NavigationBar extends C
     componentWillUnmount() {
         //alert("componentWillUnmount");
     }
+    goLink1(){
+        //注意：Customer组件使用withRouter高阶组件来连接react-router，这样它才能通过this.props.location.search获取参数
+        this.props.history.replace({pathname:'/Customer',search:'sort=name&age=18'});//方式一
+        //this.props.history.push({pathname:'/Customer',search:'?sort=name'});//方式一
+        //this.props.history.push({pathname:'/Customer',state:{name:'客服001'}});//方式二
+    }
+    goLink2(){
+        this.props.history.replace('/Partners/8888');
+    }
     render() {
         //let { activeNum } = this.props;//父组件向子组件传递的参数
         return (
@@ -41,25 +50,25 @@ let NavigationBar = (WrappedComponent,activeNum)=> class NavigationBar extends C
                     <div className="box">
                         <ul>
                             <li className={activeNum === 0 ? 'active' : ''}>
-                                <NavLink to="/">
+                                <NavLink to="/" replace>
                                     <img src={`/img/tab-home${activeNum !== 0 ? '1' : '2'}.png`} alt="" />
                                     <div className="desc">首页</div>
                                 </NavLink>
                             </li>
                             <li className={activeNum === 1 ? 'active' : ''}>
-                                <NavLink to="/Customer">
+                                <div onClick={this.goLink1.bind(this)}>
                                     <img src={`/img/tab-customer${activeNum !== 1 ? '1' : '2'}.png`} alt="" />
                                     <div className="desc">客服</div>
-                                </NavLink>
+                                </div>
                             </li>
                             <li className={activeNum === 2 ? 'active' : ''}>
-                                <NavLink to="/Partners">
+                                <div onClick={this.goLink2.bind(this)}>
                                     <img src={`/img/tab-partner${activeNum !== 2 ? '1' : '2'}.png`} alt="" />
                                     <div className="desc">合作商</div>
-                                </NavLink>
+                                </div>
                             </li>
                             <li className={activeNum === 3 ? 'active' : ''}>
-                                <NavLink to="/user/666">
+                                <NavLink to="/user/666" replace>
                                     <img src={`/img/tab-user${activeNum !== 3 ? '1' : '2'}.png`} alt="" />
                                     <div className="desc">个人中心</div>
                                 </NavLink>

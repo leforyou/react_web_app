@@ -38,5 +38,5 @@
     "react-router-dom": "^5.1.2",
     "sass-loader": "^8.0.0"
   },
-  "proxy": "http://172.16.200.204:6010/"
+  "proxy": "https://www.lou5u.com/ict-wx/"
 }

@@ -13,7 +13,7 @@ import './css/main.scss';
 
 
 
-
+window.log = window.console.log;//log('简写输入的方法log:',1111);
 
 
 
