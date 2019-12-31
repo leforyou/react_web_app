@@ -1,3 +1,73 @@
 .User{
-    
+    .head-info {
+        position: relative;
+        padding-top: 40%;
+        .bg {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            img{
+                position: absolute;
+                top: 0;
+                left: 0;
+                width: 100%;
+                height: 100%;
+            }
+        }
+        .info {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 88;
+            padding: 15px 0px;
+            display: flex;
+            align-items: center;
+            .info-box {
+                width: 100%;
+                margin-bottom: 30px;
+                display: flex;
+                align-items: center;
+                padding: 0px 12px;
+                .img-box {
+                    $wh: 66px;
+                    width: $wh;
+                    height: $wh;
+                    border-radius: 100%;
+                    overflow: hidden;
+                    .pic {
+                        width: 100%;
+                        height: 100%;
+                    }
+                }
+                .personal {
+                    margin-left: 15px;
+                    .name {
+                        margin-bottom: 2px;
+                        display: flex;
+                        align-items: center;
+                        .nick {
+                            display: block;
+                            max-width: 90px;
+                            font-size: 18px;
+                            color: #fff;
+                        }
+                        .member {
+                            color: #94d1f7;
+                            margin-left: 10px;
+                            font-size: 14px;
+                        }
+                    }
+                    .phone{
+                        color: #fff;
+                        font-size: 14px;
+                    }
+                }
+            }
+        }
+    }
 }

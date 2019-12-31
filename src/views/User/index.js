@@ -15,8 +15,25 @@ class User extends Component {
         return (
             <Fragment>
                 <div className="User">
-                    我是个人中心页面！
-                  
+                    <div className="head-info">
+                        <div className="bg">
+                            <img src="/img/user-bg.png" alt="" />
+                        </div>
+                        <div className="info">
+                            <div className="info-box">
+                                <div className="img-box">
+                                    <img className="pic" src="/img/user-pic.png" alt=""/>
+                                </div>
+                                <div className="personal">
+                                    <div className="name">
+                                        <div className="nick">随风飘</div>
+                                        <div className="member">普通用户</div>
+                                    </div>
+                                    <div className="phone">13800138000</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
                 {/* <NavigationBar activeNum={3}></NavigationBar> 普通组件 */}
             </Fragment>

@@ -24,12 +24,13 @@
                         }
                     }
                 }
-                a,div{
+                a,>div{
                     height: 100%;
                     display: flex;
                     flex-direction: column;
                     align-items: center;
                     justify-content: center;
+                    cursor: pointer;
                     img{
                         $wh:25px;
                         width: $wh;
@@ -38,7 +39,7 @@
                     .desc{
                         color: #666;
                         font-size: 10px;
-                        margin-top: -4px;
+                        margin-top: -2px;
                     }
                 }
             }

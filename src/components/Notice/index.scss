@@ -1,0 +1,30 @@
+.Notice{
+    .box{
+        position: relative;
+        background: #fff;
+        display: flex;
+        align-items: center;
+        padding: 10px 20px;
+        img{
+            min-width: 40px;
+            width: 40px;
+            height: 20px;
+            margin-right: 10px;
+        }
+        .desc{
+            line-height: 25px;
+            font-size: 13px;
+            color: #666;
+            max-width: calc(100% - 150px);
+        }
+        .time {
+            color: #666;
+            font-size: 13px;
+            white-space: nowrap;
+            position: absolute;
+            top: 50%;
+            right: 20px;
+            transform: translateY(-50%);
+        }
+    }
+}

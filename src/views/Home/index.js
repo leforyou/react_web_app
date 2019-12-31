@@ -1,7 +1,12 @@
 import React, { Component,Fragment } from 'react';
 
 import NavigationBar from './../../components/NavigationBar/index';
-import Toast from './../../components/Toast/index';
+//import Toast from './../../components/Toast/index';
+import SwiperHome from './../../components/SwiperHome/index';
+import Notice from './../../components/Notice/index';
+import SystemCloud from './../../components/SystemCloud/index';
+
+
 
 import './index.scss';
 
@@ -16,17 +21,14 @@ class Home extends Component {
     componentDidMount(){
         
     }
-    show(){
-        Toast.show('你点我干嘛！');
-    }
     render() {
         return (
             <Fragment>
                 <div className="Home">
-                    我是首页！你们好吗？
-                </div>
-                <button onClick={this.show.bind(this)}>111111111</button>
-                {/* <Toast></Toast> */}
+                    <SwiperHome/>
+                    <Notice/>
+                    <SystemCloud/>
+                </div>                
                 {/* <NavigationBar activeNum={0}></NavigationBar> 普通组件 */}
             </Fragment>
         );

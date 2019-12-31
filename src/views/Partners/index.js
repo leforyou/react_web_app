@@ -44,7 +44,7 @@ class Partners extends Component {
         //alert("componentDidUpdate");
     }
     loadFunc(){
-        console.log(8888888);
+        //console.log(8888888);
         //this.getListData();
     }
     render() {
