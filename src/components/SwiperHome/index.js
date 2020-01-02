@@ -14,13 +14,13 @@ class SwiperHome extends Component {
         this.state = {
             arr: [
                 {
-                    url: '/img/banner1.jpg'
+                    url: require('@/img/banner1.jpg')
                 },
                 {
-                    url: '/img/banner2.jpg'
+                    url: require('@/img/banner2.jpg')
                 },
                 {
-                    url: '/img/banner3.jpg'
+                    url: require('@/img/banner3.jpg')
                 }
             ]
         };

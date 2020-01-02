@@ -11,11 +11,12 @@ import { Link } from 'react-router'
 import {HashRouter, Route,Switch} from 'react-router-dom';
 import React, { Component,Fragment } from 'react';
 
-import Home from './views/Home/index';//首页 
-import Customer from './views/Customer/index';//客服
-import Partners from './views/Partners/index';//合作商
-import User from './views/User/index';//个人中心
-import NotFound from './views/NotFound/index';
+import Home from '@/views/Home/index';//首页 
+import Customer from '@/views/Customer/index';//客服
+import Partners from '@/views/Partners/index';//合作商
+import User from '@/views/User/index';//个人中心
+import UserInfo from '@/views/UserInfo/index';//个人信息页面
+import NotFound from '@/views/NotFound/index';//404页面
 
 class RouterConfig extends Component {
   constructor(props){
@@ -39,6 +40,7 @@ class RouterConfig extends Component {
             <Route path='/Customer' exact component={Customer}></Route>
             <Route path='/Partners/:id' exact component={Partners}></Route>
             <Route path='/User/:id' exact component={User}></Route>
+            <Route path='/UserInfo' exact component={UserInfo}></Route>
             <Route component={NotFound}>{/* 所有错误路由跳转页面 */}</Route>
           </Switch>
           </HashRouter>

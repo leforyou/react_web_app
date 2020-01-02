@@ -1,10 +1,10 @@
 import React, { Component,Fragment } from 'react';
 
-import NavigationBar from './../../components/NavigationBar/index';
-//import Toast from './../../components/Toast/index';
-import SwiperHome from './../../components/SwiperHome/index';
-import Notice from './../../components/Notice/index';
-import SystemCloud from './../../components/SystemCloud/index';
+import NavigationBar from '@/components/NavigationBar/index';
+//import Toast from '@/components/Toast/index';
+import SwiperHome from '@/components/SwiperHome/index';
+import Notice from '@/components/Notice/index';
+import SystemCloud from '@/components/SystemCloud/index';
 
 
 

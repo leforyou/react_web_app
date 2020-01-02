@@ -20,7 +20,7 @@ class SystemCloud extends Component {
                         <li>
                             <div className="li-box">
                                 <div className="img-box">
-                                    <img src="/img/system-registers-ALIYUN.png" alt=""/>
+                                    <img src={require("@/img/system-registers-ALIYUN.png")} alt=""/>
                                 </div>
                                 <div className="info">
                                     <div className="company">阿里云产品</div>
@@ -32,7 +32,7 @@ class SystemCloud extends Component {
                         <li>
                             <div className="li-box">
                                 <div className="img-box">
-                                    <img src="/img/system-registers-TENGXUNYUN.png" alt=""/>
+                                    <img src={require("@/img/system-registers-TENGXUNYUN.png")} alt=""/>
                                 </div>
                                 <div className="info">
                                     <div className="company">腾讯云产品</div>
@@ -44,7 +44,7 @@ class SystemCloud extends Component {
                         <li>
                             <div className="li-box">
                                 <div className="img-box">
-                                    <img src="/img/system-registers-HUAWEIYUN.png" alt=""/>
+                                    <img src={require("@/img/system-registers-HUAWEIYUN.png")} alt=""/>
                                 </div>
                                 <div className="info">
                                     <div className="company">华为云产品</div>
@@ -56,7 +56,7 @@ class SystemCloud extends Component {
                         <li>
                             <div className="li-box">
                                 <div className="img-box">
-                                    <img src="/img/system-registers-BAIDUYUN.png" alt=""/>
+                                    <img src={require("@/img/system-registers-BAIDUYUN.png")} alt=""/>
                                 </div>
                                 <div className="info">
                                     <div className="company">百度云产品</div>
@@ -68,7 +68,7 @@ class SystemCloud extends Component {
                         <li>
                             <div className="li-box">
                                 <div className="img-box">
-                                    <img src="/img/system-registers-JINSHANYUN.png" alt=""/>
+                                    <img src={require("@/img/system-registers-JINSHANYUN.png")} alt=""/>
                                 </div>
                                 <div className="info">
                                     <div className="company">金山云产品</div>

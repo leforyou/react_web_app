@@ -1,0 +1,32 @@
+.UserInfo{
+    padding: 3px 0px;
+    margin-bottom: 35px;
+    ul {
+        li {
+            background: #fff;
+            margin-bottom: 3px;
+            position: relative;
+            .li-box {
+                padding: 12px;
+                display: flex;
+                justify-content: space-between;
+                align-items: center;
+                .name {
+                    color: #666;
+                }
+                .right {
+                    display: flex;
+                    align-items: center;
+                    .desc {
+                        color: #999;
+                    }
+                    .icon-more {
+                        width: 8px;
+                        height: 14px;
+                        margin-left: 10px;
+                    }
+                }
+            }
+        }
+    }
+}

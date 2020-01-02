@@ -19,7 +19,7 @@ class Notice extends Component {
         return (
             <div className="Notice">
                 <div className="box">
-                    <img src="/img/notice.png" alt=""/>
+                    <img src={require("@/img/notice.png")} alt=""/>
                     <div className="desc">{content}</div>
                     <div className="time">2019-12-26</div>
                 </div>

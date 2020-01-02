@@ -70,4 +70,80 @@
             }
         }
     }
+    .user-about{
+        padding: 0px 12px;
+        margin-top: -20px;
+        position: relative;
+        z-index: 88;
+        ul {
+            display: flex;
+            background: #fff;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba($color: #000000, $alpha: 0.1);
+            li {
+                flex-grow: 1;
+                position: relative;
+                &:nth-last-child(1)::after {
+                    display: none;
+                }
+                &::after {
+                    $val: 12px;
+                    content: '';
+                    position: absolute;
+                    top: $val;
+                    bottom: $val;
+                    right: 0px;
+                    border-right: 1px solid #e5e5e5;
+                    transform: scaleX(0.5);
+                }
+                .li-box {
+                    display: flex;
+                    flex-direction: column;
+                    align-items: center;
+                    padding: 12px 5px;
+                    img {
+                        $wh: 30px;
+                        width: $wh;
+                        height: $wh;
+                    }
+                    .desc {
+                        color: #666;
+                        font-size: 15px;
+                        margin-top: 5px;
+                    }
+                }
+            }
+        }
+    }
+    .user-more{
+        margin-top: 20px;
+        margin-bottom: 30px;
+        ul {
+            li {
+                position: relative;
+                background: #fff;
+                margin-bottom: 3px;
+                &.margin-btm {
+                    margin-bottom: 8px;
+                }
+                .li-box {
+                    position: relative;
+                    display: flex;
+                    align-items: center;
+                    padding: 10px 25px;
+                    .desc {
+                        font-size: 14px;
+                    }
+                    img {
+                        position: absolute;
+                        right: 18px;
+                        top: 50%;
+                        transform: translateY(-50%);
+                        width: 8px;
+                        height: 14px;
+                    }
+                }
+            }
+        }
+    }
 }

@@ -1,6 +1,6 @@
 import React, { Component,Fragment } from 'react';
 import { withRouter } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
-import NavigationBar from './../../components/NavigationBar/index';
+import NavigationBar from '@/components/NavigationBar/index';
 
 
 import './index.scss';

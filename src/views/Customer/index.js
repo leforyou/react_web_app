@@ -1,6 +1,6 @@
 import React, { Component ,Fragment} from 'react';
 import { withRouter } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
-import NavigationBar from './../../components/NavigationBar/index';
+import NavigationBar from '@/components/NavigationBar/index';
 
 
 import './index.scss';
@@ -20,10 +20,10 @@ class Customer extends Component {
             <Fragment>
                 <div className="Customer">
                     <div className="bg">
-                        <img src="/img/bg1.png" alt=""/>
+                        <img src={require("@/img/bg1.png")} alt=""/>
                     </div>
                     <div className="people">
-                        <img src="/img/customer-pic.png" alt=""/>
+                        <img src={require("@/img/customer-pic.png")} alt=""/>
                     </div>
                     <div className="customer padding-lr">
                         <div className="box">
