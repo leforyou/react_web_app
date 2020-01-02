@@ -29,6 +29,7 @@ class Toast extends Component {
 }
 //控制器
 Toast.show = (props) => {
+    if(document.querySelector('.Toast'))return;
     const wrapped_div = document.createElement('div');
     wrapped_div.setAttribute('id','wrapped_div');
     document.body.appendChild(wrapped_div);

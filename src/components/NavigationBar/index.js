@@ -14,6 +14,7 @@ let NavigationBar = (WrappedComponent,activeNum)=> class NavigationBar extends C
         this.state = {};
         // console.log(this.state);
         // console.log(this.props);
+        //console.log(Component.prototype.axios);
     }
 
     componentDidMount() {

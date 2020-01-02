@@ -40,5 +40,15 @@ axios.interceptors.response.use(
   }
 );
 
-Component.prototype.axios = axios;//将axios的请求库绑定到组件上，使用方法：this.axios.get();
+Component.prototype.axios = axios;
+/*
+将axios的请求库绑定到组件上，使用方法：this.axios.get();
+console.log(Component.prototype.axios);
+
+
+非组件页面调用的使用方式
+import { Component } from "react";
+let { axios } = Component.prototype;
+axios.get();
+*/
 

@@ -11,6 +11,11 @@ import './css/reset.scss';
 import './css/main.scss';
 
 
+import store from '@/redux/store';
+import { Provider } from "react-redux";
+
+
+
 
 
 window.log = window.console.log;//log('简写输入的方法log:',1111);
@@ -20,7 +25,9 @@ window.log = window.console.log;//log('简写输入的方法log:',1111);
 
 ReactDOM.render(
     <Fragment>
-        <App />
+        <Provider store={store}>
+            <App />
+        </Provider>
     </Fragment>,
     document.getElementById('root')
 );

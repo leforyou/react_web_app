@@ -1,13 +1,26 @@
 import React, { Component } from 'react';
 import './index.scss';
 
+import ChangeNickNameLayer from '@/components/ChangeNickNameLayer';
+
 class UserInfo extends Component {
+    constructor(props){
+        super(props);
+        this.state = {};
+    }
+    componentDidMount(){
+        
+    }
+    changeNickName(){
+        //修改昵称
+        ChangeNickNameLayer.show();
+    }
     render() {
         return (
             <div className="UserInfo">
                 <ul>
                     <li>
-                        <div className="li-box">
+                        <div className="li-box" onClick={this.changeNickName.bind(this)}>
                             <div className="name">昵称</div>
                             <div className="right">
                                 <div className="desc">爱你好心情</div>
