@@ -51,7 +51,8 @@ let NavigationBar = (WrappedComponent,activeNum)=> class NavigationBar extends C
                         <ul>
                             <li className={activeNum === 0 ? 'active' : ''}>
                                 <NavLink to="/" replace>
-                                    <img src={`/img/tab-home${activeNum !== 0 ? '1' : '2'}.png`} alt="" />
+                                    {/* <img src={`/img/tab-home${activeNum !== 0 ? '1' : '2'}.png`} alt="" /> */}
+                                    <img src={require(`./../../img/tab-home${activeNum !== 0 ? '1' : '2'}.png`)} alt="" />
                                     <div className="desc">首页</div>
                                 </NavLink>
                             </li>
