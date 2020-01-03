@@ -1,15 +1,30 @@
 import React, { Component,Fragment } from 'react';
 import { withRouter,NavLink } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
 import NavigationBar from '@/components/NavigationBar/index';
-
+//import PropTypes from 'prop-types'; //引入限制UI组件(展示组件)属性限制
 
 import './index.scss';
+
+
+import {getUserInfo,getFinanceInfo} from '@/redux/actions/user';
+import {connect} from 'react-redux'; 
 
 class User extends Component {
     constructor(props){
         super(props);
         this.state = {};
-        console.log('react-router:',this.props);
+        this.props.getUserInfo();
+        console.log('react-router:------constructor',this.props.userInfo);
+    }
+    static getDerivedStateFromProps(nextProps, prevState) {
+        console.log('nextProps, prevState:',nextProps, prevState);
+        return null; 
+    }
+    componentDidMount(){
+        console.log('react-router:-------componentDidMount',this.props.userInfo);
+        setTimeout(() => {
+            console.log('setTimeout:  this.props',this.props.userInfo);
+        }, 3000);
     }
     render() {
         return (
@@ -105,4 +120,28 @@ class User extends Component {
     }
 }
 
-export default NavigationBar(withRouter(User),3);//高阶组件的使用
+function mapStateToProps(state,ownProps){
+    console.log('state,ownProps：',state,ownProps);
+    return{
+        userInfo:state.user.userInfo
+    }
+}
+function mapDispatchToProps(dispatch,ownProps){
+    //console.log(dispatch,'\n\n',ownProps);
+    return {
+        getUserInfo:(parms)=>{
+            dispatch(getUserInfo(parms))
+        },
+        getFinanceInfo:(parms)=>{
+            dispatch(getFinanceInfo(parms))
+        }
+    }
+}
+
+/* //对展示组件中属性各个值得类型进行限制 不合符规则会报错
+User.propTypes = {
+    userInfo: PropTypes.object.isRequired, //属性对象中的value必须是number类型还有必须有值
+}; */
+
+let User_ = connect(mapStateToProps,mapDispatchToProps)(User);//连接并返回
+export default NavigationBar(withRouter(User_),3);//高阶组件的使用
