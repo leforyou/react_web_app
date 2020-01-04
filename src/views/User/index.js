@@ -1,32 +1,33 @@
 import React, { Component,Fragment } from 'react';
 import { withRouter,NavLink } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
 import NavigationBar from '@/components/NavigationBar/index';
-//import PropTypes from 'prop-types'; //引入限制UI组件(展示组件)属性限制
+
 
 import './index.scss';
 
 
 import {getUserInfo,getFinanceInfo} from '@/redux/actions/user';
 import {connect} from 'react-redux'; 
+/*
+action的方法除了挂载到this.props上，还有下面这种使用方式
+import store from '@/redux/store';
+console.log(store);
+store.dispatch({
+    type: "GET_USER_INFO"
+});
+*/
 
 class User extends Component {
     constructor(props){
         super(props);
         this.state = {};
-        this.props.getUserInfo();
-        console.log('react-router:------constructor',this.props.userInfo);
-    }
-    static getDerivedStateFromProps(nextProps, prevState) {
-        console.log('nextProps, prevState:',nextProps, prevState);
-        return null; 
+        console.log('react-router:',this.props.userInfo);
     }
     componentDidMount(){
-        console.log('react-router:-------componentDidMount',this.props.userInfo);
-        setTimeout(() => {
-            console.log('setTimeout:  this.props',this.props.userInfo);
-        }, 3000);
+        this.props.getUserInfo();//获取用户信息
     }
     render() {
+        let {mobile,name} = this.props.userInfo;
         return (
             <Fragment>
                 <div className="User">
@@ -41,10 +42,10 @@ class User extends Component {
                                 </div>
                                 <div className="personal">
                                     <div className="name">
-                                        <div className="nick">随风飘</div>
+                                        <div className="nick">{name || '随风飘'}</div>
                                         <div className="member">普通用户</div>
                                     </div>
-                                    <div className="phone">13800138000</div>
+                                    <div className="phone">{mobile || '13800138000'}</div>
                                 </div>
                             </div>
                         </div>
@@ -121,7 +122,7 @@ class User extends Component {
 }
 
 function mapStateToProps(state,ownProps){
-    console.log('state,ownProps：',state,ownProps);
+    //console.log('state,ownProps：',state,ownProps);
     return{
         userInfo:state.user.userInfo
     }
@@ -138,7 +139,9 @@ function mapDispatchToProps(dispatch,ownProps){
     }
 }
 
-/* //对展示组件中属性各个值得类型进行限制 不合符规则会报错
+/*
+//import PropTypes from 'prop-types'; //引入限制UI组件(展示组件)属性限制
+//对展示组件中属性各个值得类型进行限制 不合符规则会报错
 User.propTypes = {
     userInfo: PropTypes.object.isRequired, //属性对象中的value必须是number类型还有必须有值
 }; */
