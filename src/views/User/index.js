@@ -25,6 +25,7 @@ class User extends Component {
     }
     componentDidMount(){
         this.props.getUserInfo();//获取用户信息
+        this.props.getFinanceInfo();//获取钱包与积分
     }
     render() {
         let {mobile,name} = this.props.userInfo;

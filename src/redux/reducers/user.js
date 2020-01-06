@@ -2,11 +2,13 @@ import {
     GET_USER_INFO,
     GET_FINANCE_INFO
 } from '@/redux/actions/user';
+
 //默认值
 let defaultState = {
     userInfo:{},
     financeInfo:{}
 };
+
 export default(state = defaultState,action)=>{
     //console.log('state,action',state,action);
     switch (action.type){
@@ -19,10 +21,12 @@ export default(state = defaultState,action)=>{
                 userInfo:action.payload
             });
         //获取用户的钱包与积分信息
-        case GET_FINANCE_INFO:
+        case `${GET_FINANCE_INFO}_PENDING`:
+            return state;
+        case `${GET_FINANCE_INFO}_FULFILLED`:
             return Object.assign({
                 ...state,
-                financeInfo:action.data
+                userInfo:action.payload
             });
         //默认值
         default:

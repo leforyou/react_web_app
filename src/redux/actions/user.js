@@ -39,6 +39,13 @@ export const getUserInfo = (parms) => {//支持传参数parms
 export const getFinanceInfo = (parms) => {
     return {
       type: GET_FINANCE_INFO,
-      data:{}
+      payload: {
+        //redux-promise-middleware插件的异步操作
+        promise:  new Promise((resolve,reject)=>{
+          axios.get(`/appWx/finance/userFund/info`).then(res=>{
+            resolve(res.result || {});
+          });
+        })
+      }
     }
 }
