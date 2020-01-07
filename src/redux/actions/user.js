@@ -39,6 +39,7 @@ export const getUserInfo = (parms) => {//支持传参数parms
 export const getFinanceInfo = (parms) => {
     return {
       type: GET_FINANCE_INFO,
+      //payload: {name:'Mr.wang'}
       payload: new Promise((resolve,reject)=>{ //异步写法二
         axios.get(`/appWx/finance/userFund/info`).then(res=>{
           resolve(res.result || {});
