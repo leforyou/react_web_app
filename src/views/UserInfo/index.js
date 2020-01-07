@@ -3,13 +3,19 @@ import './index.scss';
 
 import ChangeNickNameLayer from '@/components/ChangeNickNameLayer';
 
+
+
+import {getUserInfo} from '@/redux/actions/user';
+import {connect} from 'react-redux'; 
+
+
 class UserInfo extends Component {
     constructor(props){
         super(props);
         this.state = {};
     }
     componentDidMount(){
-        
+        this.props.getUserInfo();//获取用户信息
     }
     changeNickName(){
         //修改昵称
@@ -23,7 +29,7 @@ class UserInfo extends Component {
                         <div className="li-box" onClick={this.changeNickName.bind(this)}>
                             <div className="name">昵称</div>
                             <div className="right">
-                                <div className="desc">爱你好心情</div>
+                                <div className="desc">{this.props.userInfo.name || ''}</div>
                                 <img className="icon-more" src={require("@/img/ico-more1.png")} alt="" />
                             </div>
                         </div>
@@ -58,5 +64,18 @@ class UserInfo extends Component {
         );
     }
 }
-
-export default UserInfo;
+function mapStateToProps(state,ownProps){
+    //console.log('state,ownProps：',state,ownProps);
+    return{
+        userInfo:state.user.userInfo
+    }
+}
+function mapDispatchToProps(dispatch,ownProps){
+    //console.log(dispatch,'\n\n',ownProps);
+    return {
+        getUserInfo:(parms)=>{
+            dispatch(getUserInfo(parms))
+        }
+    }
+}
+export default connect(mapStateToProps,mapDispatchToProps)(UserInfo);

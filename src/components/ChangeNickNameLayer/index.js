@@ -4,18 +4,23 @@ import './index.scss';
 
 import Toast from '@/components/Toast/index';
 
+import {getUserInfo} from '@/redux/actions/user';
+import store from '@/redux/store';
+
+
 class ChangeNickNameLayer extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            value:''
+            value:'',
+            userInfo:{}
         };
     }
     componentDidMount() {
-
-    }
-    componentWillUnmount() {
-
+        //await store.dispatch(getUserInfo());//获取用户信息
+        this.setState({
+            userInfo:store.getState().user.userInfo//用户的信息
+        });
     }
     close(){
         //关闭
@@ -27,11 +32,21 @@ class ChangeNickNameLayer extends Component {
     }
     confirm(){
         //确认
-        let {value} = this.state;
+        let {value,userInfo: {id} } = this.state;//对象二级解构
         if(value === ''){
             return Toast.show('昵称不能为空！');
         }
-        this.close();
+
+        this.axios.post('/appWx/sys/user/update', { name: value, userId: id }).then(res => {
+            if (res.code === 200) {
+                this.close();
+                Toast.show('修改成功');
+                store.dispatch(getUserInfo());//获取用户信息
+            } else {
+                Toast.show('修改失败');
+            }
+        });
+        
     }
     render() {
         return ReactDOM.createPortal((
@@ -87,6 +102,9 @@ ChangeNickNameLayer.show = (props) => {
 ChangeNickNameLayer.show();
 
 */
+
+
+
 export default ChangeNickNameLayer;
 
 

@@ -10,3 +10,20 @@ import promise from 'redux-promise-middleware';
 const initValue={};
 const store = createStore(reducers,initValue,applyMiddleware(promise));
 export default store;
+
+
+
+
+/* 
+redux在页面其它的使用方式
+
+import {getUserInfo} from '@/redux/actions/user';
+import store from '@/redux/store';
+
+
+store.dispatch(getUserInfo());//获取用户信息   --- 注意：返回的是promise对象，可以使用 async/await
+let {userInfo} = store.getState().user;
+
+
+
+*/
