@@ -26,7 +26,7 @@ export default(state = defaultState,action)=>{
         case `${GET_FINANCE_INFO}_FULFILLED`:
             return Object.assign({
                 ...state,
-                userInfo:action.payload
+                financeInfo:action.payload
             });
         //默认值
         default:

@@ -29,6 +29,7 @@ class User extends Component {
     }
     render() {
         let {mobile,name} = this.props.userInfo;
+        console.log('react-router:',this.props.userInfo);
         return (
             <Fragment>
                 <div className="User">
