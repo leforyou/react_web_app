@@ -28,7 +28,7 @@ axios.interceptors.request.use(
       config.data = qs.stringify(config.data);
     }
     //let token = localStorage.getItem('token');
-    config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIFxQsYoV+AwYbhw0G9OSSKFNK7Kww8zNrc6eO/07ZCOozIiw+sURabr1F0EsB1LOQRzKoLnUQq2WYax1n9AaIMn0=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
+    config.headers["user-token"] = 'bJCAiRERbHTRQPAwd2NIFx3GXWn0sTS/IGfWkrYamdWembfBvanJm82jIlhc/dguB+NA4fndWxUbVaqjNczYOth9gY3nnv5FDMwI+PHmIlY=';//这个token要在微信开发工具中的复制出来,手机没token会报错的
 
     //console.log(config);
     return config;

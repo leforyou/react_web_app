@@ -1,6 +1,9 @@
 import React, { Component,Fragment } from 'react';
 import { withRouter } from 'react-router-dom';//高阶组件将react-router的history、location、match三个对象绑定到this.props。
 import NavigationBar from '@/components/NavigationBar/index';
+import BetterScroll from '@/components/BetterScroll/index';
+
+
 
 import './index.scss';
 
@@ -50,7 +53,9 @@ class Partners extends Component {
         //let listArr = this.state;
         return (
             <Fragment>
+                <BetterScroll></BetterScroll>
                 <div className="Partner padding-lr">
+                    
                     <ul>
                         {
                             this.state.listArr.length > 0 
