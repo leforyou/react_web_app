@@ -20,7 +20,6 @@ function getOneRandomList(step = 0) {
 }
 
 const TIME_BOUNCE = 800;
-const TIME_STOP = 600;
 let STEP = 0;
 
 class BetterScroll extends Component {
@@ -30,7 +29,9 @@ class BetterScroll extends Component {
             beforePullDown: true,
             isPullingDown: false,
             dataList: getOneRandomList(),
-            bscroll: null
+            bscroll: null,
+            downTip:'下拉刷新',
+            pullDownRefresh_threshold:70,
         };
     }
     componentDidMount() {
@@ -63,42 +64,79 @@ class BetterScroll extends Component {
     } */
 
     initBscroll() {
-        let bscroll = new BScroll('.pulldown-bswrapper', {
-            bounceTime: TIME_BOUNCE,
+        let {pullDownRefresh_threshold} = this.state;
+        let bscroll = new BScroll('.wrap-bscroll', {
+            bounceTime: TIME_BOUNCE,//设置回弹动画的动画时长
             pullDownRefresh: {
-                threshold: 70,//配置顶部下拉的距离来决定刷新时机
+                threshold: pullDownRefresh_threshold,//配置顶部下拉的距离来决定刷新时机
                 stop: 56//回弹停留的距离
             }
         });
         this.setState({ bscroll });
 
-        bscroll.on('pullingDown', this.pullingDownHandler.bind(this));
+        bscroll.on('pullingDown', this.pullingDown.bind(this));
         bscroll.on('scroll', this.scrollHandler.bind(this));
+        bscroll.on('scrollEnd', ()=>{
+            console.log('scrollEnd88888888888888888888888888')
+
+
+            /* this.setState({
+                downTip:'下拉刷新'
+            }); */
+            let setTime = setTimeout(() => {
+                this.setState({
+                    isPullingDown: false,
+                    downTip:'下拉刷新'
+                });
+                //this.state.bscroll.refresh();//重新计算 BetterScroll，当 DOM 结构发生变化的时候务必要调用确保滚动的效果正常。
+                clearTimeout(setTime);
+            }, TIME_BOUNCE);
+            //this.state.bscroll.refresh();//重新计算 BetterScroll，当 DOM 结构发生变化的时候务必要调用确保滚动的效果正常。
+        });
     }
     scrollHandler(pos) {
-        console.log(pos.y)
+        console.log(pos.y);
+        let {pullDownRefresh_threshold} = this.state;
+        if(pos.y >= pullDownRefresh_threshold && this.state.isPullingDown === false){
+            this.setState({downTip:'释放刷新'});
+        }
+        if(pos.y < pullDownRefresh_threshold && this.state.isPullingDown === false){
+            this.setState({downTip:'下拉刷新'});
+        }
     }
-    async pullingDownHandler() {
+    async pullingDown() {
+        //当顶部下拉的距离大于 threshold 值时，触发一次 pullingDown 钩子。
+        this.setState({downTip:'加载中。。。'});
+        console.log('88888888888888888888888888888888888888888888888')
         this.setState({
             beforePullDown: false,
             isPullingDown: true,
         });
-        STEP += 10
+        STEP += 10;
 
         await this.requestData();
 
-        this.setState({
+        
+        //this.finishPullDown();
+        this.state.bscroll.finishPullDown();
+        /* this.setState({
             isPullingDown: false,
-        });
-        this.finishPullDown();
+        }); */
+        /* let setTime = setTimeout(() => {
+            this.setState({
+                downTip:'下拉刷新'
+            });
+            this.state.bscroll.refresh();//重新计算 BetterScroll，当 DOM 结构发生变化的时候务必要调用确保滚动的效果正常。
+            clearTimeout(setTime);
+        }, TIME_BOUNCE + 1000); */
     };
-    async finishPullDown() {
-        const stopTime = TIME_STOP;
+    /* async finishPullDown() {
+        //结束下拉动作
         await new Promise(resolve => {
             setTimeout(() => {
                 this.state.bscroll.finishPullDown();
                 resolve();
-            }, stopTime)
+            }, 600)
         })
         setTimeout(() => {
             this.setState({
@@ -106,7 +144,7 @@ class BetterScroll extends Component {
             });
             this.state.bscroll.refresh()
         }, TIME_BOUNCE)
-    }
+    } */
     async requestData() {
         try {
             const newData = await this.ajaxGet(/* url */)
@@ -125,35 +163,33 @@ class BetterScroll extends Component {
         })
     }
     render() {
-        let { dataList,beforePullDown ,isPullingDown} = this.state;
+        let { dataList,downTip,beforePullDown ,isPullingDown} = this.state;
         return (
             <div className="BetterScroll">
-                <div className="pulldown">
-                    <div ref="bsWrapper" className="pulldown-bswrapper">
-                        <div className="pulldown-scroller">
-                            <div className="pulldown-wrapper">
-                                <div v-show="beforePullDown" style={{'display':beforePullDown?'block':'none'}}>
-                                    <span>释放刷新</span>
-                                </div>
-                                <div v-show="!beforePullDown" style={{'display':!beforePullDown?'block':'none'}}>
-                                    <div v-show="isPullingDown" style={{'display':isPullingDown?'block':'none'}}>
-                                        <span>加载中 ...</span>
-                                    </div>
-                                    <div v-show="!isPullingDown" style={{'display':!isPullingDown?'block':'none'}}><span>刷新成功</span></div>
-                                </div>
+                <div className="wrap-bscroll" id="wrap-scroll">
+                    <div className="bscroll-box">
+                        {/* <div className="head-pulldown">
+                            <div style={{'display':beforePullDown?'block':'none'}}>释放刷新</div>
+                            <div style={{'display':!beforePullDown?'block':'none'}}>
+                                <div style={{'display':isPullingDown?'block':'none'}}>加载中 ...</div>
+                                <div style={{'display':!isPullingDown?'block':'none'}}>刷新成功</div>
                             </div>
-                            <ul className="pulldown-list">
-                                {
-                                    dataList.map((item, index) => {
-                                        return (
-                                            <li className="pulldown-list-item" key={index}>
-                                                {`I am item ${index} `}
-                                            </li>
-                                        )
-                                    })
-                                }
-                            </ul>
+                        </div> */}
+                        <div className="downwarp-content">
+                            <p className={`downwarp-progress ${isPullingDown?'mescroll-rotate':''}`} style={{transform:'rotate(58.5deg)'}}></p>
+                            <p className="downwarp-tip">{downTip || '下拉刷新'}</p>
                         </div>
+                        <ul className="content-ul">
+                            {
+                                dataList.map((item, index) => {
+                                    return (
+                                        <li className="pulldown-list-item" key={index}>
+                                            {`I am item ${index} `}
+                                        </li>
+                                    )
+                                })
+                            }
+                        </ul>
                     </div>
                 </div>
             </div >

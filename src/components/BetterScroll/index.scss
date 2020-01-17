@@ -1,20 +1,63 @@
 .BetterScroll {
     height: 380px;
-    .pulldown {
+    .wrap-bscroll {
         height: 100%;
-    }
-
-    .pulldown-bswrapper {
-        position: relative ;
-        height: 100%;
-        padding: 0 10px;
-        border: 1px solid #ccc;
         overflow: hidden;
+        .bscroll-box {
+            position: relative ;
+            padding: 0 10px;
+            border: 1px solid #ccc;
+            /* .head-pulldown {
+                position: absolute;
+                width: 100%;
+                padding: 20px;
+                box-sizing: border-box;
+                transform: translateY(-100%) translateZ(0);
+                text-align: center;
+                color: #999;
+            } */
+            .downwarp-content{
+                position: absolute;
+                width: 100%;
+                box-sizing: border-box;
+                transform: translateY(-100%) translateZ(0px);
+                text-align: center;
+                color: rgb(153, 153, 153);
+                padding: 20px;
+                .downwarp-progress{
+                    display: inline-block;
+                    width: 16px;
+                    height: 16px;
+                    border-radius: 50%;
+                    border: 1px solid gray;
+                    border-bottom-color: transparent;
+                    vertical-align: middle;
+                    &.mescroll-rotate {
+                        animation: mescrollRotate .6s linear infinite
+                    }                    
+                    @keyframes mescrollRotate {
+                        0% {
+                            transform: rotate(0deg)
+                        }
+                        100% {
+                            transform: rotate(360deg)
+                        }
+                    }
+                }
+                .downwarp-tip{
+                    margin-left: 8px;
+                    display: inline-block;
+                    font-size: 12px;
+                    color: gray;
+                    vertical-align: middle;
+                }
+            }
+        }
     }
 
-    .pulldown-list {
-        padding: 0
-    }
+    
+
+    
 
     .pulldown-list-item {
         padding: 10px 0;
@@ -22,13 +65,5 @@
         border-bottom: 1px solid #ccc;
     }
 
-    .pulldown-wrapper {
-        position: absolute;
-        width: 100%;
-        padding: 20px;
-        box-sizing: border-box;
-        transform: translateY(-100%) translateZ(0);
-        text-align: center;
-        color: #999;
-    }
+    
 }
